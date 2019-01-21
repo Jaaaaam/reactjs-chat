@@ -1,0 +1,28 @@
+@import "./variables.scss";
+
+.navbar {
+  position: absolute;
+  top:0px;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  height: $navbar-height;
+  border: 1px solid pink;
+}
+
+.sidebar{
+  position: absolute;
+  top:$navbar-height;
+  bottom: 0px;
+  width: $sidebar-width;
+  border: 1px solid red;
+}
+
+.chat{
+  position: absolute;
+  top:$navbar-height;
+  bottom: 0px;
+  left: $sidebar-width;
+  right: 0px;
+  border: 1px solid blue;
+}
