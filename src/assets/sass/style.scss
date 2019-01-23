@@ -6,8 +6,9 @@
   bottom: 0px;
   left: 0px;
   right: 0px;
+  z-index: 3;
   height: $navbar-height;
-  border: 1px solid pink;
+  border-bottom: 1px solid $border-color;
 }
 
 .sidebar{
@@ -15,7 +16,8 @@
   top:$navbar-height;
   bottom: 0px;
   width: $sidebar-width;
-  border: 1px solid red;
+  z-index: 2;
+  border-right: 1px solid $border-color;
 }
 
 .chat{
@@ -24,5 +26,15 @@
   bottom: 0px;
   left: $sidebar-width;
   right: 0px;
-  border: 1px solid blue;
+  background-color: $chat-bg;
+
+  @at-root #{&}-response {
+    position: fixed;
+    bottom: 0;
+    display: flex;
+
+    textarea {
+      width: 100%;
+    }
+  }
 }
