@@ -10,7 +10,7 @@ class App extends Component {
       <Fragment>
       <NavBar />
       <div className="main-wrapper">
-        <SideBar />
+        {/* <SideBar /> */}
         <Chat />
       </div>
       </Fragment>
