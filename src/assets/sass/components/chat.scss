@@ -1,0 +1,19 @@
+.chat{
+  position: absolute;
+  top:$navbar-height;
+  bottom: 0px;
+  left: $sidebar-width;
+  right: 0px;
+  background-color: $chat-bg;
+
+  @at-root #{&}-response {
+    position: fixed;
+    bottom: 0;
+    display: flex;
+
+    textarea {
+      width: 100%;
+      resize: none;
+    }
+  }
+}

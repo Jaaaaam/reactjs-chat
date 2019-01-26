@@ -1,136 +1,21 @@
 @import "./variables.scss";
 @import "./utilities.scss";
+@import "./components/navbar.scss";
+@import "./components/sidebar.scss";
+@import "./components/chat.scss";
+@import "./components/chat-centered.scss";
+
 
 html, body {
   font-family: 'Rubik', sans-serif;
 }
 
-.navbar {
-  position: absolute;
-  top:0px;
-  bottom: 0px;
-  left: 0px;
-  right: 0px;
-  z-index: 3;
-  height: $navbar-height;
-  border-bottom: 1px solid $border-color;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 30px;
-  font-size: 14px;
-  font-weight: bold;
-  letter-spacing: 1px;
-  color: $gray-dark;
-
-  .navbar-left-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    i {
-      transition: font-size 0.25s linear;
-    }
-
-    i:hover {
-      font-size: 30px;
-    }
-
-    input {
-      border: none;
-      border-bottom: 1px solid $gray-dark;
-      transition: border-width 0.25s linear;
-    }
-
-    input:focus {
-      border-bottom: 3px solid $gray-dark;
-    }
-  }
-
-  .navbar-right-content {
-    ul {
-      list-style: none;
-      display: flex;
-      justify-content: space-between;
-
-      li {
-        padding: 0 10px
-      }
-
-      li:last-child {
-        padding-right: 0px
-      }
-    }
-  }
-
-  .navbar-header {
-    font-weight: bold;
-    letter-spacing: 2px;
-    color: #000;
-    font-size: 20px;
-    position: absolute;
-    left: calc(50% - 50px);
-  }
-}
-
-.sidebar{
-  position: absolute;
-  top:$navbar-height;
-  bottom: 0px;
-  width: $sidebar-width;
-  z-index: 2;
-  border-right: 1px solid $border-color;
-}
-
-.chat{
-  position: absolute;
-  top:$navbar-height;
-  bottom: 0px;
-  left: $sidebar-width;
-  right: 0px;
-  background-color: $chat-bg;
-
-  @at-root #{&}-response {
-    position: fixed;
-    bottom: 0;
-    display: flex;
-
-    textarea {
-      width: 100%;
-    }
-  }
-}
-
-.chat-centered {
-  position: absolute;
-  top:$navbar-height;
-  bottom: 0px;
-  left: 0px;
-  right: 0px;
-  background-image: linear-gradient(to bottom right, lighten($blue-light, 40%), darken($blue, 10%));
-
-  @at-root #{&}-content {
-    width: $chat-centered-width;
-    border: 2px solid $gray;
-    position: absolute;
-    top: 0px;
-    bottom: 0px;
-    background-color: $gray-light;
-  }
-
-  @at-root #{&}-response {
-    position: fixed;
-    width: $chat-centered-width;
-    bottom: 0;
-    background-color: $gray;
-    border: none;
-
-    textarea {
-      width: 100%;
-    }
-  }
-}
-
 textarea:focus, input:focus{
   outline: none;
+}
+
+input, textarea {
+  font-family: 'Rubik', sans-serif;
+  font-size: 16px;
+  color: #000;
 }

@@ -1,0 +1,70 @@
+.chat-centered {
+  position: absolute;
+  top:$navbar-height;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  background-image: linear-gradient(to bottom right, lighten($blue-light, 40%), darken($blue, 10%));
+
+  @at-root #{&}-content {
+    width: $chat-centered-width;
+    border: 2px solid $gray;
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    background-color: $gray-light;
+
+    .chat-centered-conversation {
+      padding: 0px 20px;
+
+      .conversation-item {
+        padding: 15px 0px;
+        display: flex;
+        .chat-bubble{
+          background-color: $gray-dark-1;
+          padding: 13px 20px 10px 20px;
+          border-radius: 10px;
+          font-weight: bold;
+          max-width: 500px;
+        }
+        .left {
+          color: #000;
+        }
+        .right {
+          color: $blue-dark;
+          background-color: $blue-light-1;
+        }
+      }
+      .flex-right {
+        justify-content: flex-end;
+      }
+    }
+  }
+
+  @at-root #{&}-response {
+    position: fixed;
+    width: $chat-centered-width;
+    bottom: 0;
+    background-color: $gray;
+    border: none;
+    border-top: 2px solid $gray; 
+
+    i, p {
+      padding: 0 20px
+    }
+    textarea {
+      width: 100%;
+      resize: none;
+      border: none;
+      background: none;
+      padding: 20px 10px 10px 10px;
+      font-weight: bold;
+      font-size: 16px;
+    }
+
+    p {
+      color: $blue-accent;
+      font-weight: bold;
+    }
+  }
+}

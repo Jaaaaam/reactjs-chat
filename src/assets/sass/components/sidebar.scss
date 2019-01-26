@@ -1,0 +1,8 @@
+.sidebar{
+  position: absolute;
+  top:$navbar-height;
+  bottom: 0px;
+  width: $sidebar-width;
+  z-index: 2;
+  border-right: 1px solid $border-color;
+}

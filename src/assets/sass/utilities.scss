@@ -7,3 +7,16 @@
 .uppercase {
   text-transform: uppercase;
 }
+
+.round-image {
+  height: 45px;
+  width: 45px;
+  border-radius: 50%;
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+}
+
+.margin-left {
+  margin-left: 15px;
+}
