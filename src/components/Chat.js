@@ -1,68 +1,85 @@
 import React, { Component } from 'react'
+import uuidv4 from 'uuid/v4'
+
+import ConversationItems from './ConversationItems'
 
 export default class Chat extends Component {
+  state = {
+    conversations: [
+      {
+        id: 1,
+        senderId: 1,
+        message: 'Hello!!! How are you'
+      },
+      {
+        id: 2,
+        senderId: 1,
+        message: 'Are you there?'
+      },
+      {
+        id: 3,
+        senderId: 1,
+        message: 'Hey.'
+      },
+      {
+        id: 4,
+        senderId: 0,
+        message: 'Hi Sorry for the late reply. I was doing some errands'
+      },
+    ],
+    loggedInUser: {
+      id: 0,
+      name: 'Jam'
+    },
+    chatMessage: ''
+  }
+
+  changeChatValue = (e) => {
+    this.setState({
+      chatMessage: e.target.value
+    })
+  }
+
+  onPressEnter = (e) => {
+    if(e.keyCode === 13 && e.shiftKey === false) {
+      e.preventDefault();
+      this.sendMessage()
+    }
+  }
+
+  sendMessage = () => {
+    const { loggedInUser, conversations, chatMessage } = this.state
+    const newConversations = conversations
+    const newMessage = {
+      id: uuidv4(),
+      senderId: loggedInUser.id,
+      message: chatMessage
+    }
+
+    newConversations.push(newMessage)
+    this.setState({
+      conversations: newConversations,
+      chatMessage: ''
+    })
+  }
+
   render() {
+  const { conversations, loggedInUser, chatMessage } = this.state
   return (
     <div className="chat-centered horizontal-center">
       <div className="chat-centered-content">
         <div className="chat-centered-conversation">
-          <div className="conversation-item">
-            <div 
-            className="round-image"
-            style= {
-              {background: "url('/images/default-profile.jpg')"}
-            }>
-            </div>
-            <div className="chat-bubble margin-left">
-              Hello!!! How are you?
-            </div>
-          </div>
-          <div className="conversation-item">
-            <div 
-            className="round-image"
-            style= {
-              {background: "url('/images/default-profile.jpg')"}
-            }>
-            </div>
-            <div className="chat-bubble margin-left left">
-              Are you there?
-            </div>
-          </div>
-          <div className="conversation-item">
-            <div 
-            className="round-image"
-            style= {
-              {background: "url('/images/default-profile.jpg')"}
-            }>
-            </div>
-            <div className="chat-bubble margin-left left">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. In eget aliquet tellus. Nulla viverra laoreet nisl quis convallis. Ut vel mattis dolor. Cras porta cursus nisl a finibus. Morbi fermentum orci nec feugiat sagittis. Morbi eget magna mattis, posuere nibh ac, volutpat eros. Aliquam erat volutpat. Fusce metus magna, tincidunt vitae luctus luctus, elementum ut ex.
-            </div>
-          </div>
-          <div className="conversation-item">
-            <div 
-            className="round-image"
-            style= {
-              {background: "url('/images/default-profile.jpg')"}
-            }>
-            </div>
-            <div className="chat-bubble margin-left left">
-              Are you there?
-            </div>
-          </div>
-          <div className="conversation-item flex-right">
-            <div className="chat-bubble margin-left right">
-              Yes, I am here. Sorry for the late response. I was doing some errands. 
-            </div>
-          </div>
- 
+          <ConversationItems conversations={conversations} loggedInUser={loggedInUser} />
         </div>
         <div className="chat-centered-response horizontal-center">
-          <i class="material-icons">
+          <i className="material-icons">
             attach_file
           </i>
-          <textarea />
-          <p className="uppercase">Send</p>
+          <textarea 
+            value={ chatMessage }
+            onChange={ (e) => { this.changeChatValue(e) } }
+            onKeyDown={(e) => this.onPressEnter(e)} /> 
+          <button type="submit" onClick={ this.sendMessage } className="uppercase">Send</button>
         </div>
       </div>
     </div>

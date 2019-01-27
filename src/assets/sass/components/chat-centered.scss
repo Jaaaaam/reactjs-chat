@@ -49,7 +49,7 @@
     border: none;
     border-top: 2px solid $gray; 
 
-    i, p {
+    i, button {
       padding: 0 20px
     }
     textarea {
@@ -62,9 +62,12 @@
       font-size: 16px;
     }
 
-    p {
+    button {
       color: $blue-accent;
       font-weight: bold;
+      background: none;
+      border: none;
+      cursor: pointer;
     }
   }
 }

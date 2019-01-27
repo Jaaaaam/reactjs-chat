@@ -5,7 +5,7 @@ export default class NavBar extends Component {
     return (
       <div className="navbar">
         <div className="navbar-left-content">
-          <i class="material-icons">
+          <i className="material-icons">
           search
           </i>
           <input></input>
