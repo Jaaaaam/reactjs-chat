@@ -10,9 +10,16 @@ class App extends Component {
     endpoint: 'http://localhost:4000/'
   }
 
-  render() {
+  componentDidMount() {
     const { endpoint } = this.state
     const socket = socketIOClient(endpoint)
+    socket.on('connectToRoom', (test) => {
+      console.log(test, 'TEST')
+    })
+  }
+
+  render() {
+    
     return (
       <Fragment>
       <NavBar />

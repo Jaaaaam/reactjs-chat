@@ -4,7 +4,7 @@
   bottom: 0px;
   left: 0px;
   right: 0px;
-  background-image: linear-gradient(to bottom right, lighten($blue-light, 40%), darken($blue, 10%));
+  background-image: linear-gradient(to top, #1c92d2,#f2fcfe);
 
   @at-root #{&}-content {
     width: $chat-centered-width;
