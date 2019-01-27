@@ -18,15 +18,18 @@ let roomNo = 1;
 io.on('connection', socket => {
   console.log('User connected')
   console.log(socket.id, 'socket')
-  console.log(io.sockets.adapter.rooms['room-'+roomNo], 'ADAPTER')
+  // console.log(io.sockets.adapter.rooms['room-'+roomNo], 'ADAPTER')
   // const clientNumber = io.sockets.adapter.rooms['room-'+roomNo].length
 
   if (io.nsps['/'].adapter.rooms["room-"+roomNo] && io.nsps['/'].adapter.rooms["room-"+roomNo].length >  1) roomNo++
 
   socket.join('room-'+roomNo)
 
-  io.sockets.in('room-'+roomNo).emit('connectToRoom', `You are now connected to ${'room-'+roomNo}. You're ID is ${socket.id}`)
-  io.emit('get-id', socket.id)
+  const socketData = {
+    id: socket.id,
+    message: `You are now connected to ${'room-'+roomNo}. You're ID is ${socket.id}`
+  }
+  io.sockets.in('room-'+roomNo).emit('connectToRoom', socketData)
   
   socket.on('disconnect', () => {
     console.log('user disconnected');

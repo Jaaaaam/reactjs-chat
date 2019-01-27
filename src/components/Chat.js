@@ -6,32 +6,52 @@ import ConversationItems from './ConversationItems'
 export default class Chat extends Component {
   state = {
     conversations: [
-      {
-        id: 1,
-        senderId: 1,
-        message: 'Hello!!! How are you'
-      },
-      {
-        id: 2,
-        senderId: 1,
-        message: 'Are you there?'
-      },
-      {
-        id: 3,
-        senderId: 1,
-        message: 'Hey.'
-      },
-      {
-        id: 4,
-        senderId: 0,
-        message: 'Hi Sorry for the late reply. I was doing some errands'
-      },
+      // {
+      //   id: 1,
+      //   senderId: 1,
+      //   message: 'Hello!!! How are you'
+      // },
+      // {
+      //   id: 2,
+      //   senderId: 1,
+      //   message: 'Are you there?'
+      // },
+      // {
+      //   id: 3,
+      //   senderId: 1,
+      //   message: 'Hey.'
+      // },
+      // {
+      //   id: 4,
+      //   senderId: 0,
+      //   message: 'Hi Sorry for the late reply. I was doing some errands'
+      // },
     ],
     loggedInUser: {
       id: 0,
       name: 'Jam'
     },
     chatMessage: ''
+  }
+
+  componentDidMount() {
+    const {conversations} = this.state
+
+    if (conversations.length > 0) return;
+    const socketData = this.props
+    const { message } = socketData
+    console.log(this.props, 'DATA')
+    const newConversations = []
+    const welcomeMessage = {
+      id: uuidv4(),
+      senderId: uuidv4(),
+      message: message
+    }
+
+    newConversations.push(welcomeMessage)
+    this.setState({
+      conversations: newConversations
+    })
   }
 
   changeChatValue = (e) => {
@@ -65,6 +85,7 @@ export default class Chat extends Component {
 
   render() {
   const { conversations, loggedInUser, chatMessage } = this.state
+  
   return (
     <div className="chat-centered horizontal-center">
       <div className="chat-centered-content">
